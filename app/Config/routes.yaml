@@ -2,3 +2,11 @@ index:
     uri: /
     controller: Controller\HomeController
     httpMethod: [GET]
+hello:
+    uri: /hello
+    controller: Controller\HelloController
+    httpMethod: [GET, POST]
+jacki:
+    uri: /jacki
+    controller: Controller\JackiController
+    httpMethod: [GET, POST]

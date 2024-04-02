@@ -2,6 +2,7 @@
 
 namespace Controller;
 
+use Studoo\EduFramework\Core\ConfigCore;
 use Studoo\EduFramework\Core\Controller\ControllerInterface;
 use Studoo\EduFramework\Core\Controller\Request;
 use Studoo\EduFramework\Core\View\TwigCore;
@@ -20,6 +21,8 @@ class HomeController implements ControllerInterface
      */
     public function execute(Request $request): string|null
     {
+
+        var_dump(ConfigCore::getConfig(key: 'version'));
         return TwigCore::getEnvironment()->render('home/home.html.twig',
             [
                 'titre'   => 'Hello World !',
