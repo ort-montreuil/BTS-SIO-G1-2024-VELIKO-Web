@@ -4,6 +4,16 @@
 
 {% block content %}
     <h1>{{ titre }}</h1>
-    
-{% endblock %}
 
+    {% for user in listeusers  %}
+        {{ user.nom}}-{{ user.id }}<a href="/hello?user_id={{ user.id }}&statCrud=supprimer">Supprimer</a> <a href="/hello?user_id={{ user.id }}&statCrud=update">update</a><br>
+    {% endfor %}
+    <p>Créer un nouveau nom</p>
+    <form action="/hello" method="post">
+        <label for="nom">Nom</label>
+        <input type="text" id="nom" name="nom" value="{{ user.nom }}">
+        <input type="hidden" name="statCrud" value="{{ statCrud }}">
+        <input type="hidden" name="user_id" value="{{ user.id }}">
+        <input type="submit" value="Envoyer">
+    </form>
+{% endblock %}
