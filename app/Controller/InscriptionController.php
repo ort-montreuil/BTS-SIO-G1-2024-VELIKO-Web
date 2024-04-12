@@ -36,12 +36,12 @@ class InscriptionController implements ControllerInterface
                 !preg_match("/[^A-Za-z0-9]/", $password)||
                 !preg_match("/[@]/", $email)||
                 !preg_match("/[.]/", $email)){
-                // Construire un message d'erreur
+                // message d'erreur
                 return "<center><h1>Adresse e-mail ou le mot de passe n'est pas conforme aux critères </h1> <br> 
                         <a href='/inscription'>Veuillez Ressayez</a> </center";
             }
 
-// Si le mot de passe est valide, procéder à l'inscription
+// Si le mot de passe est valide
             $password_hache = password_hash($password, PASSWORD_DEFAULT);
             $this->insertUser($nom, $prenom, $email, $password_hache);
             header("Location: /encrypt");
@@ -77,27 +77,27 @@ class InscriptionController implements ControllerInterface
      */
 
     #[NoReturn] private function insertUser(string $nom, string $prenom, string $email, string $password_hache): void{
-        // Connexion à la base de données
+        // Connexion 
         $bdd = new PDO('mysql:host=localhost;dbname=TestCyb', 'root', 'root');
 
-        // Vérifier si l'e-mail existe déjà dans la base de données
+        //  si le mail existe déjà dans la base de données
         $stmt = $bdd->prepare("SELECT COUNT(*) FROM Utilisateur WHERE email = ?");
         $stmt->execute([$email]);
         $result = $stmt->fetchColumn();
 
         if ($result > 0) {
-            // L'e-mail existe déjà, renvoyer un message d'erreur à l'utilisateur
+            //message d'erreur à l'utilisateur
             header("Location: /monMail");
             exit();
         }
 
-        // Préparation de la requête d'insertion
+        //requête d'insertion
         $stmt = $bdd->prepare("INSERT INTO Utilisateur (nom, prenom, email, password) VALUES (?, ?, ?, ?)");
 
-        // Exécution de la requête avec les données utilisateur
+        // Exécution requête
         $stmt->execute([$nom, $prenom, $email, $password_hache]);
 
-        // Redirection vers une autre page après l'inscription réussie
+        //inscription réussie
         header("Location: /encrypt");
         exit();
     }
