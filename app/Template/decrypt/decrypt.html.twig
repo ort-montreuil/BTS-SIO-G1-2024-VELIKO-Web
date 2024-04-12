@@ -1,0 +1,58 @@
+{% extends "base.html.twig" %}
+
+{% block title %}{{ titre }}{% endblock %}
+
+{% block content %}
+    <style>
+        #form-container {
+            text-align: center;
+            background-color: blue;
+            border-radius: 10px;
+            padding: 20px;
+        }
+
+        #decry {
+            margin-bottom: 10px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        #affiche {
+            margin-bottom: 10px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        #submit-btn {
+            padding: 10px 20px;
+            background-color: forestgreen;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        body{
+            background-color: dimgrey;
+        }
+
+    </style>
+
+    <center><h1 style="color: #333;">{{ titre }}</h1></center>
+    <a href="/connexion" style="color: white;">Déconnexion</a>
+    <form id="form-container" action="decrypt" method="post">
+        <div>
+            <input type="text" placeholder="Entrer votre texte" id="decry" name="decry">
+            <input type="text" placeholder="" readonly id="affiche" value="{{ decoder }}"><br>
+        </div><br>
+        <button type="submit" id="submit-btn">Envoyer</button>
+        <a href="/encrypt">page précedente</a>
+    </form>
+    <h1>BONJOUR! MONSIEUR CETTE PAGE EST JUSTE ICI POUR VERIFIER QUE TOUT FONCTIONNE LORS DE L EXECUTION DE LA REQUETE S INSCRIRE ET CONNEXION JE LA REMPLACERAI QUAND J AURAI TERMINER MA PAGE </h1>
+
+{% endblock %}
+
+
+

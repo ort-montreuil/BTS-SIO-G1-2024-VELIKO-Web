@@ -9,7 +9,7 @@ use Twig\Error\LoaderError;
 use Twig\Error\RuntimeError;
 use Twig\Error\SyntaxError;
 
-class HomeController implements ControllerInterface
+class EncryptController implements ControllerInterface
 {
     /**
      * @param Request $request Requête HTTP
@@ -20,11 +20,23 @@ class HomeController implements ControllerInterface
      */
     public function execute(Request $request): string|null
     {
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+            if (isset($_POST["inputText"]) && !empty($_POST["inputText"])) {
+                $texte = $_POST["inputText"];
+                $texte_crypte = base64_encode($texte);
 
-        return TwigCore::getEnvironment()->render('home/home.html.twig',
+
+
+            }
+        }
+
+
+
+        return TwigCore::getEnvironment()->render('encrypt/Encrypt.html.twig',
             [
-                'titre'   => 'Hello World !',
-                'requete' => $request
+                'titre'   => 'Encrypt Formulaire',
+                'requete' => $request,
+                'reponse'=> $texte_crypte,
             ]
         );
     }

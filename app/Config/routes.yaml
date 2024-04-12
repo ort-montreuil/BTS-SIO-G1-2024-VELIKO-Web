@@ -1,12 +1,34 @@
 index:
-    uri: /
+    uri: /home
     controller: Controller\HomeController
     httpMethod: [GET]
-jacki:
-    uri: /jacki
-    controller: Controller\JackiController
-    httpMethod: [GET, POST]
-hello:
-    uri: /hello
-    controller: Controller\HelloController
-    httpMethod: [GET]
+
+encrypt:
+    uri: /encrypt
+    controller: Controller\EncryptController
+    httpMethod: [GET,POST]
+
+decrypt:
+    uri: /decrypt
+    controller: Controller\DecryptController
+    httpMethod: [GET,POST]
+
+inscription:
+    uri: /inscription
+    controller: Controller\InscriptionController
+    httpMethod: [GET,POST]
+
+connexion:
+    uri: /connexion
+    controller: Controller\ConnexionController
+    httpMethod: [GET,POST]
+
+Email:
+    uri: /email
+    controller: Controller\EmailController
+    httpMethod: [GET,POST]
+
+a-p-i:
+    uri: /api
+    controller: Controller\Recup_APIController
+    httpMethod: [GET,POST]

@@ -9,7 +9,7 @@ use Twig\Error\LoaderError;
 use Twig\Error\RuntimeError;
 use Twig\Error\SyntaxError;
 
-class HomeController implements ControllerInterface
+class DecryptController implements ControllerInterface
 {
     /**
      * @param Request $request Requête HTTP
@@ -20,11 +20,21 @@ class HomeController implements ControllerInterface
      */
     public function execute(Request $request): string|null
     {
+        if ($_SERVER["REQUEST_METHOD"]== "POST" ){
+            if (isset($_POST["decry"]) && !empty($_POST["decry"])){
+                $text = $_POST["decry"];
+                $decrypt = base64_decode($text);
+            }
+        }
 
-        return TwigCore::getEnvironment()->render('home/home.html.twig',
+
+
+
+        return TwigCore::getEnvironment()->render('decrypt/monMail.html.twig',
             [
-                'titre'   => 'Hello World !',
-                'requete' => $request
+                'titre'   => 'Decrypt Formulaire',
+                'requete' => $request,
+                'decoder' => $decrypt,
             ]
         );
     }

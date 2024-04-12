@@ -1,0 +1,110 @@
+{% extends "base.html.twig" %}
+
+{% block title %}
+    {{ titre }}
+{% endblock %}
+{% block content %}
+
+<style>
+    .container {
+        text-align: center;
+        background-color: #f2f2f2;
+        padding: 20px;
+        border-radius: 10px;
+
+
+    }
+
+    .input-group {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 20px;
+    }
+
+    .input-group label {
+        width: 120px;
+        margin-right: 10px;
+        text-align: right;
+        color: #333;
+    }
+
+    .input-group input {
+        width: 200px;
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+
+    #btnSub {
+        margin-top: 10px;
+        padding: 10px 20px;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    #btnSub:hover {
+        background-color: #0056b3;
+    }
+
+    .logo {
+        display: flex;
+
+
+    }
+
+    .logo img {
+        width: 70px;
+        height: 65px;
+        margin-right: 10px;
+        border-radius: 50px;
+
+    }
+    body{
+        background-color: darkslateblue;
+    }
+</style>
+    <body>
+    <div class="logo">
+        <img src="/Image/Veliko1.jpg" alt="Logo Veliko">
+        <center><h1 style="color: white">VELIKO</h1></center>
+    </div>
+    <div class="container">
+        <div><h1>{{ titre }}</h1></div>
+        <form action="/inscription" method="post"> <center><div class="Block">
+            <div id="phraseD" >Veuillez remplir le formulaire</div> <br>
+                <div class="input-group">
+                    <label for="nom">Nom: </label>
+                   <input type="text" id="nom" name="nom" required>
+                </div>
+
+                <div class="input-group">
+                    <label for="prenom">Prénom: </label>
+                    <input type="text" id="prenom" name="prenom">
+                </div>
+
+                <div class="input-group">
+                    <label for="mail">E-mail: </label>
+                    <input type="text" id="mail" name="email">
+                </div>
+
+                <div class="input-group">
+                    <label for="password">Mot de passe: </label>
+                    <input type="password" id="password" name="password">
+                </div>
+                <button id="btnSub" type="submit">S'inscrire</button>
+
+            </div></center></form>
+
+        <div>
+            <a href="/connexion" id="btnConnexion" class="btn-connexion">Page de connexion</a>
+        </div>
+    </div>
+    </body>
+
+
+
+{% endblock %}

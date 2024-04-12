@@ -3,17 +3,172 @@
 {% block title %}{{ titre }}{% endblock %}
 
 {% block content %}
-    <h1>{{ titre }}</h1>
+    <style>
 
-    {% for user in listeusers  %}
-        {{ user.nom}}-{{ user.id }}<a href="/hello?user_id={{ user.id }}&statCrud=supprimer">Supprimer</a> <a href="/hello?user_id={{ user.id }}&statCrud=update">update</a><br>
-    {% endfor %}
-    <p>Créer un nouveau nom</p>
-    <form action="/hello" method="post">
-        <label for="nom">Nom</label>
-        <input type="text" id="nom" name="nom" value="{{ user.nom }}">
-        <input type="hidden" name="statCrud" value="{{ statCrud }}">
-        <input type="hidden" name="user_id" value="{{ user.id }}">
-        <input type="submit" value="Envoyer">
-    </form>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            background-color: #007bff;
+            color: #fff;
+            padding: 20px 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+
+        }
+
+        .logo img {
+            width: 50px;
+            height: auto;
+            margin-right: 10px;
+            border-radius: 50px;
+
+        }
+
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav ul li {
+            display: inline-block;
+            margin-left: 20px;
+        }
+
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        nav ul li a.btn-primary {
+            background-color: #fff;
+            color: #007bff;
+            padding: 10px 20px;
+            border-radius: 5px;
+        }
+
+        nav ul li a.btn-primary:hover {
+            background-color: #0056b3;
+            color: #fff;
+        }
+
+        section {
+            padding: 50px 0;
+        }
+
+        h2 {
+            text-align: center;
+        }
+
+        .service {
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        .service img {
+            max-width: 100%;
+            height: auto;
+            margin-bottom: 20px;
+        }
+
+        footer {
+            background-color: #f0f0f0;
+            text-align: center;
+            padding: 20px 0;
+        }
+
+
+    </style>
+
+
+
+        <h1>{{ titre }}</h1>
+         <header>
+            <div class="container">
+                <div class="logo">
+                    <img src="/Image/Veliko1.jpg" alt="Logo Veliko">
+                    <h1>Veliko</h1>
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#about">À propos</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                        <li><a href="/connexion">Connexion</a></li>
+                        <button onclick="rediriger()" class="btn-primary" style="border-color: white">Inscription</button>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+        <section id="hero">
+            <div class="container">
+                <h2>Location de Vélos à Paris</h2>
+                <p>Explorez Paris à votre rythme avec nos vélos disponibles partout dans la ville.</p>
+                <a href="/inscription" class="btn-primary">Inscrivez-vous dès maintenant</a>
+            </div>
+        </section>
+        <section id="services">
+            <div class="container">
+                <h2>Nos Services</h2>
+                <div class="service">
+                    <img src="service-1.jpg" alt="Service 1">
+                    <h3>Vélos de qualité</h3>
+                    <p>Nos vélos sont bien entretenus et prêts à vous emmener dans vos aventures à Paris.</p>
+                </div>
+                <div class="service">
+                    <img src="service-2.jpg" alt="Service 2">
+                    <h3>Stations pratiques</h3>
+                    <p>Nos stations de vélos sont stratégiquement placées dans toute la ville pour votre commodité.</p>
+                </div>
+                <div class="service">
+                    <img src="service-3.jpg" alt="Service 3">
+                    <h3>Abonnements flexibles</h3>
+                    <p>Choisissez parmi une variété d'abonnements pour répondre à vos besoins de déplacement.</p>
+                </div>
+            </div>
+        </section>
+        <section id="about">
+            <div class="container">
+                <h2>À Propos de Nous</h2>
+                <p>Véliko est la première entreprise de location de vélos à Paris. Nous sommes fiers de fournir un moyen écologique et pratique de se déplacer dans la ville lumière.</p>
+            </div>
+        </section>
+        <section id="contact">
+            <div class="container">
+                <h2>Contactez-nous</h2>
+                <p>Pour toute question ou préoccupation, n'hésitez pas à nous contacter.</p>
+                <a href="contact.html" class="btn-secondary">Nous Contacter</a>
+            </div>
+        </section>
+        <footer>
+            <div class="container">
+                <p>&copy; 2024 Véliko - Tous droits réservés</p>
+            </div>
+        </footer>
+
+<script>
+    function rediriger(){
+        var url = "/inscription";
+
+        window.location.href = url;
+    }
+</script>
+
+
+
+
 {% endblock %}
+

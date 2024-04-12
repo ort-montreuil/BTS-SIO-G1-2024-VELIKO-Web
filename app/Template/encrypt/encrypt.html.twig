@@ -1,0 +1,65 @@
+{% extends "base.html.twig" %}
+
+{% block title %}{{ titre }}{% endblock %}
+{% block content %}
+<style>
+    #form-container {
+        text-align: center;
+        background-color: blue;
+        border-radius: 10px;
+        padding: 20px;
+    }
+
+    input{
+        margin-bottom: 10px;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+
+    #pgSV{
+        padding: 10px 20px;
+        background-color: dimgrey;
+        color: white;
+        border: solid;
+        cursor: pointer;
+        border-radius: 5px;
+    }
+
+
+
+    #envoyer {
+        padding: 10px 20px;
+        background-color: forestgreen;
+        color: white;
+        border: none;
+        cursor: pointer;
+        border-radius: 5px;
+    }
+
+    body{
+        background-color: lightskyblue;
+
+
+
+    }
+
+    </style>
+    <center><h1>{{ titre }}</h1></center>
+    <form  action="encrypt" method="post" id="form-container" ><center>
+
+            <input type="text"  id="inputText" name="inputText" placeholder="Entrer votre texte">
+          <input type="text" placeholder="" readonly id="affiche" value="{{ reponse }}"><br> <div>
+            </div><br><button id="envoyer" type="submit">Envoyer</button>
+            <br>
+            <div> <br>
+                <a id="pgSV" href="/decrypt">Page suivante</a>
+            </div>
+        </center>
+
+    </form>
+
+    <h1>BONJOUR! MONSIEUR CETTE PAGE EST JUSTE ICI POUR VERIFIER QUE TOUT FONCTIONNE LORS DE L EXECUTION DE LA REQUETE S INSCRIRE ET CONNEXION JE LA REMPLACERAI QUAND J AURAI TERMINER MA PAGE </h1>
+
+{% endblock %}
+
