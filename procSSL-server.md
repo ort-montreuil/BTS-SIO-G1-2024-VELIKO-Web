@@ -1,4 +1,4 @@
-## Ceci est la procédure d’installation d’un serveur Apache avec SSL auto-signé
+## Ceci est la procédure d’installation d’un serveur Apache Ubuntu 20.04 avec SSL auto-signé
 
 <h3>Etape 1, installation de Apache :</h3>
 Dans un premier temps, il faut installer Apache :
