@@ -1,10 +1,27 @@
-version : '3'
+version: '3.7'
 
 services:
-  php:
-    build: .
+  db:
+    image: mysql:8
+    container_name: db
+    restart: always
+    environment:
+      - MYSQL_USER=user
+      - MYSQL_PASSWORD=user-password
+      - MYSQL_ROOT_PASSWORD=root
     volumes:
-      - ./:/var/www/html
-      - /var/log/apache2/app:/var/log/apache2/
+      - ~/mysql-data:/var/lib/mysql
     ports:
-      - 8080:80
+      - 3307:3306
+
+  phpmyadmin:
+    image: phpmyadmin
+    container_name: phpmyadmin
+    restart: always
+    environment:
+      - PMA_HOST=db
+      - PMA_PORT=3306
+    ports:
+      - 8081:80
+    depends_on:
+      - db
