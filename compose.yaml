@@ -8,3 +8,10 @@ services:
       - /var/log/apache2/app:/var/log/apache2/
     ports:
       - 8080:80
+
+      #PHP My Admin
+  phpmyadmin:
+        image: phpmyadmin
+        restart: always
+        ports:
+        - 8081:80
