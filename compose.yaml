@@ -5,12 +5,13 @@ services:
     image: mysql:8
     container_name: db
     restart: always
-    environment:
-      - MYSQL_USER=user
-      - MYSQL_PASSWORD=user-password
-      - MYSQL_ROOT_PASSWORD=root
     volumes:
       - ~/mysql-data:/var/lib/mysql
+    environment:
+      MSQL_ROOT_PASSWORD: pass
+      MSQL_DATABASE: demo
+      MSQL_USER: test
+      MYSQL_PASSWORD: pass
     ports:
       - 3307:3306
 
@@ -18,10 +19,17 @@ services:
     image: phpmyadmin
     container_name: phpmyadmin
     restart: always
-    environment:
-      - PMA_HOST=db
-      - PMA_PORT=3306
     ports:
       - 8081:80
     depends_on:
       - db
+
+  php:
+    image: php:8.2-apache
+    container_name: php8.2
+    ports:
+      - 808:80
+    volumes:
+        - ./php:/var/www/html
+    build:
+        context: Dockerfile
