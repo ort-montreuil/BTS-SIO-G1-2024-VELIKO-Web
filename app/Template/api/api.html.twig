@@ -1,0 +1,21 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+    <h1>{{ titre }}</h1>
+
+    {% if apiData is defined and apiData.stations is not empty %}
+        <ul>
+            {% for station in apiData.stations %}
+                <li>
+                    Station: {{ station.name }} <br>
+                    Station ID: {{ station.station_id }} <br>
+                    Latitude: {{ station.lat }} <br>
+                    Longitude: {{ station.lon }} <br>
+                    Capacity: {{ station.capacity }}
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>Aucune donnée disponible pour le moment.</p>
+    {% endif %}
+{% endblock %}

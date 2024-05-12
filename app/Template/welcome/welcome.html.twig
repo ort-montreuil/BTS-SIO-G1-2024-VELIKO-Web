@@ -1,0 +1,545 @@
+{% extends "base.html.twig" %}
+
+{% block title %}{{ titre }}{% endblock %}
+
+{% block content %}
+    <style>
+
+       /* body {
+            background-color: #F6F0E4;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            background-color: #AE412A;
+            color: #fff;
+            padding: 20px 0;
+        }
+
+        .logo {
+            display: flex;
+
+
+        }
+
+        .logo img {
+            width: 50px;
+            height: auto;
+            margin-bottom:40px ;
+            margin-right: 10px;
+            border-radius: 50px;
+
+        }
+        h1{
+            font-family:"Berlin Sans FB";
+            width: 50px;
+            height: auto;
+            margin-bottom:40px ;
+            margin-right: 10px;
+        }
+
+        nav ul {
+
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav ul li {
+
+            display: inline-block;
+            margin-left: 20px;
+        }
+
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        nav ul li a.btn-primary {
+            background-color: #fff;
+            color: #007bff;
+            padding: 10px 20px;
+            border-radius: 5px;
+        }
+
+        nav ul li a.btn-primary:hover {
+            background-color: #023C56;
+            color: #fff;
+        }
+
+        section {
+            padding: 50px 0;
+        }
+
+        h2 {
+            text-align: center;
+            color:#023C56;
+            font-family:"Berlin Sans FB";
+        }
+
+        .service {
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        .service img {
+            max-width: 100%;
+            height: auto;
+            margin-bottom: 20px;
+        }
+
+        footer {
+            background-color: #fff;
+            text-align: center;
+            padding: 20px 0;
+        }
+*/
+
+
+       body {
+           background-color: #f6f0e4;
+           font-family:'Montserrat', sans-serif;
+           margin: 0;
+           padding: 0;
+           color: #333; /* Couleur de texte principale */
+       }
+
+       .container {
+
+           justify-content: space-between; /* Pour positionner le logo à l'extrémité gauche et le contenu à l'extrémité droite */
+           align-items: center;
+           max-width: 1200px;
+           margin: 0 auto;
+           padding: 0 20px;
+       }
+
+       header {
+           background-color: #ae412a;
+           color: #fff;
+           padding: 20px 0;
+           border-radius: 10px;
+       }
+
+       .logo {
+           display: flex;
+           align-items: center; /* Centrage vertical du logo et du texte */
+       }
+
+       .logo img {
+           width: 50px;
+           height: 50px;
+           border-radius: 50%;
+           margin-right: 10px;
+       }
+
+       h1 {
+           font-family: "Berlin Sans FB", sans-serif;
+           font-size: 2em;
+           margin: 0;
+       }
+
+       nav ul {
+           list-style: none;
+           margin: 0;
+           padding: 0;
+
+
+       }
+
+       nav ul li {
+           display: inline-block;
+           margin-left: 20px;
+
+       }
+
+       nav ul li a {
+
+           color: #fff;
+           text-decoration: none;
+           padding: 10px 20px;
+           border-radius: 5px;
+       }
+
+       nav ul li a.btn-primary:hover {
+           background-color: #023c56;
+       }
+ .btn-primary{
+     background-color: black;
+ }
+       section {
+           padding: 50px 0;
+       }
+
+       h2 {
+           text-align: center;
+           color: #023c56;
+           font-family: "Berlin Sans FB", sans-serif;
+       }
+
+       .service {
+           text-align: center;
+           margin-top: 50px;
+       }
+
+       .service img {
+           max-width: 100%;
+           height: auto;
+           margin-bottom: 20px;
+           border-radius: 5px;
+           transition: transform 0.3s ease-in-out; /* Animation de transition au survol */
+       }
+
+       .service img:hover {
+           transform: scale(1.1); /* Zoom au survol de l'image */
+       }
+
+       .service h3 {
+           font-size: 1.5em;
+       }
+
+       .service p {
+           font-size: 1.1em;
+       }
+
+       footer {
+           background-color:black ;
+           text-align: center;
+           padding: 20px 0;
+       }
+       .social-icons i {
+           font-size: 24px; /* Augmentez la taille de la police selon vos besoins */
+           margin: 0 10px;
+       }
+       .service-container {
+           display: flex;
+           justify-content: space-around; /* Alignement des éléments avec un espacement égal */
+       }
+
+       .service {
+           display: block;
+           flex-basis: 30%; /* Largeur de chaque service */
+           padding: 20px; /* Espacement intérieur */
+           text-align: center; /* Centrage du contenu */
+           border: 1px solid #ccc; /* Ajout d'une bordure pour séparer les services */
+           border-radius: 5px; /* Coins arrondis */
+           transition: transform 0.3s ease-in-out; /* Animation de transition au survol */
+       }
+
+       .service:hover {
+           transform: scale(1.05); /* Zoom au survol */
+       }
+       .service-container {
+           display: flex;
+           flex-wrap: wrap; /* Permettre le retour à la ligne si nécessaire */
+           justify-content: space-between; /* Espacement égal entre les services */
+       }
+
+       .service {
+           flex-basis: calc(33.33% - 20px); /* Largeur de chaque service, en tenant compte de la marge */
+           margin-bottom: 20px; /* Espacement entre les services */
+           padding: 20px; /* Espacement intérieur */
+           border: 1px solid #ccc; /* Ajout d'une bordure pour séparer les services */
+           border-radius: 5px; /* Coins arrondis */
+           transition: transform 0.3s  ease-in-out; /* Animation de transition au survol */
+       }
+
+       .service:hover {
+           transform: scale(1.05); /* Zoom au survol */
+       }
+
+       .logo img {
+           width: 50px;
+           height: auto;
+           margin-bottom:40px ;
+           margin-right: 10px;
+           border-radius: 50px;
+
+       }
+       h1{
+           font-family:"Berlin Sans FB";
+           width: 50px;
+           height: auto;
+           margin-bottom:40px ;
+           margin-right: 10px;
+       }
+       .container p {
+           font-family: "Montserrat", sans-serif;       }
+       .temoignage-container {
+           display: flex;
+           justify-content: space-between;
+       }
+
+       .temoignage {
+           flex-basis: 48%; /* ou une autre valeur appropriée pour l'espace entre les témoignages */
+       }
+       .temoignage-container {
+           display: flex;
+           justify-content: space-between;
+       }
+
+       .temoignage {
+           flex-basis: 48%;
+           border: 1px solid #ccc; /* Ajout d'une bordure */
+           padding: 20px; /* Espacement intérieur */
+           margin-bottom: 20px; /* Espacement entre les témoignages */
+       }
+
+       .temoignage img {
+           width: 100px; /* Ajustez la taille de l'image selon vos besoins */
+           border-radius: 50%; /* Pour rendre l'image ronde */
+           margin-bottom: 10px; /* Espacement entre l'image et le texte */
+       }
+
+       .temoignage blockquote {
+           margin: 0; /* Réinitialisation des marges par défaut */
+       }
+
+       .temoignage cite {
+           display: block; /* Pour placer le nom du client en dessous du texte */
+           margin-top: 10px; /* Espacement entre le texte et le nom du client */
+           font-style: normal; /* Pour éviter l'italique sur le nom du client */
+       }
+       .nav-list {
+           display: flex;
+           flex-wrap: wrap; /* Permettre le retour à la ligne des éléments lorsque la largeur de l'écran est réduite */
+           justify-content: center; /* Centrer les éléments horizontalement */
+           padding: 0;
+           margin: 0;
+       }
+
+       .nav-list li {
+           margin: 0 10px; /* Ajouter de l'espace entre les éléments */
+       }
+       @media screen and (max-width: 768px) {
+           .nav-list li {
+               margin: 0 5px; /* Réduire l'espace entre les éléments pour les petits écrans */
+           }
+       }
+
+
+
+
+
+
+
+
+
+    </style>
+
+
+
+    <h1></h1>
+    <script src="https://maps.googleapis.com/maps/api/js?key=VOTRE_CLE_API&callback=initMap" async defer></script>
+    <script>
+        function initMap() {
+            // Coordonnées du centre de Paris
+            var paris = { lat: 48.8566, lng: 2.3522 };
+
+            // Initialisation de la carte
+            var map = new google.maps.Map(document.getElementById("map-container"), {
+                zoom: 13,
+                center: paris
+            });
+
+            // Ajout de marqueurs pour les stations de location de vélos
+            var locations = [
+                { lat: 48.866667, lng: 2.333333, name: "Station 1" },
+                { lat: 48.873611, lng: 2.334722, name: "Station 2" },
+                { lat: 48.850278, lng: 2.333889, name: "Station 3" }
+                // Ajoutez d'autres stations avec leurs coordonnées et noms
+            ];
+
+            locations.forEach(function (location) {
+                var marker = new google.maps.Marker({
+                    position: { lat: location.lat, lng: location.lng },
+                    map: map,
+                    title: location.name
+                });
+            });
+        }
+    </script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+    <header>
+        <link rel="stylesheet" href="/public/Image/Veliko1.jpg">
+        <div class="container">
+            <div class="logo">
+                <img src="/image/Veliko1.jpg" alt="Logo Veliko">
+                <h1>VELIKO</h1>
+            </div>
+            <nav>
+                <ul class="nav-list">
+                    <li><a href="#services" class="btn-primary">Services</a></li>
+                    <li><a href="#about" class="btn-primary">À propos</a></li>
+                    <li><a href="#contact" class="btn-primary">Contact</a></li>
+                    <li><a href="#tarifs" class="btn-primary">Tarifs</a></li>
+                    <li><a href="/connexion" class="btn-primary">Connexion</a></li>
+                    <li><a href="/inscription" class="btn-primary">Inscription</a></li>
+
+
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <section id="hero">
+        <div class="container">
+            <h2>Location de Vélos à Paris</h2>
+            <p>Explorez Paris à votre rythme avec nos vélos disponibles partout dans la ville.</p>
+            <p>Que vous souhaitiez faire une balade tranquille le long de la Seine ou explorer les rues animées de la ville, nos vélos de qualité sont prêts à vous accompagner dans vos aventures.</p>
+            <p>Nous proposons une large gamme de vélos, y compris des vélos de ville, des vélos électriques et des vélos tout terrain, afin que vous puissiez choisir celui qui convient le mieux à votre style et à vos besoins.</p>
+            <a href="inscription.html"  class="btn-secondary">Inscrivez-vous dès maintenant</a>
+        </div>
+    </section>
+    <section id="services">
+        <div class="container">
+            <h2>Nos Services</h2>
+            <div class="service-container">
+                <div class="service">
+                    <img src="/image/balade.jpeg" alt="Service 1">
+                    <h3>Vélos de qualité</h3>
+                    <p>Nos vélos sont bien entretenus et prêts à vous emmener dans vos aventures à Paris.</p>
+                </div>
+                <div class="service">
+                    <img src="/image/station.jpeg" alt="Service 2">
+                    <h3>Stations pratiques</h3>
+                    <p>Nos stations de vélos sont stratégiquement placées dans toute la ville pour votre commodité.</p>
+                </div>
+                <div class="service">
+                    <img src="/image/abonnement.jpeg" alt="Service 3">
+                    <h3>Abonnements flexibles</h3>
+                    <p>Choisissez parmi une variété d'abonnements pour répondre à vos besoins de déplacement.</p>
+                </div>
+                <div class="service">
+                    <img src="/image/visite-guidé.jpeg" alt="Service 4">
+                    <h3>Visites guidées à vélo</h3>
+                    <p>Explorez Paris de manière unique avec nos visites guidées à vélo. Nos guides expérimentés vous feront découvrir les quartiers les plus emblématiques de la ville.</p>
+                </div>
+                <div class="service">
+                    <img src="/image/navette_velo.jpeg" alt="Service 5">
+                    <h3>Service de navette à vélo</h3>
+                    <p>Bénéficiez d'un transport pratique et écologique à Paris avec notre service de navette à vélo. Évitez les transports en commun et découvrez la ville à votre rythme.</p>
+                </div>
+                <div class="service">
+                    <img src="/image/rental.jpeg" alt="Service 6">
+                    <h3>Location longue durée</h3>
+                    <p>Profitez de nos offres de location à long terme et explorez Paris à votre guise pendant plusieurs jours, semaines ou mois. Idéal pour les séjours prolongés dans la capitale.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="map">
+        <div class="container">
+            <h2>Stations de Location de Vélos</h2>
+            <!-- Ajoutez ici la balise div pour afficher la carte -->
+            <div id="map-container">
+                <!-- La carte sera affichée ici -->
+            </div>
+        </div>
+    </section>
+
+    <section id="tarifs">
+        <div class="container">
+            <h2>Tarifs et Forfaits</h2>
+            <p>Découvrez nos différents tarifs de location et les forfaits disponibles pour répondre à vos besoins de déplacement à Paris.</p>
+            <p>Pour plus de détails sur nos tarifs et forfaits, veuillez consulter notre <a href="/tarifs" class="btn-secondary">page des tarifs</a>.</p>
+        </div>
+    </section>
+
+    <section id="temoignages">
+        <div class="container">
+            <h2>Témoignages de Clients</h2>
+            <div class="temoignage-container">
+                <div class="temoignage">
+                    <div class="temoignage-content">
+                        <img src="/image/femme.jpeg" alt="Photo Client 1">
+                        <blockquote>
+                            <p>Excellent service de location de vélos à Paris! Les vélos étaient en parfait état et le personnel était très serviable.</p>
+                            <cite>Marie, Paris</cite>
+                        </blockquote>
+                    </div>
+                </div>
+                <div class="temoignage">
+                    <div class="temoignage-content">
+                        <img src="/image/homme.jpeg" alt="Photo Client 2">
+                        <blockquote>
+                            <p>J'ai loué un vélo pour une journée et j'ai pu explorer toute la ville sans aucun problème. Je recommande vivement Véliko!</p>
+                            <cite>Antoine, France</cite>
+                        </blockquote>
+                    </div>
+                </div>
+                <div class="temoignage">
+                    <div class="temoignage-content">
+                        <img src="/image/femme2.jpeg" alt="Photo Client 3">
+                        <blockquote>
+                            <p>La visite guidée à vélo que j'ai faite avec Véliko était incroyable. Le guide était très compétent et m'a montré des endroits que je n'aurais jamais découverts par moi-même. Une expérience vraiment enrichissante!</p>
+                            <cite>Laura, Canada</cite>
+                        </blockquote>
+                    </div>
+                </div>
+                <div class="temoignage">
+                    <div class="temoignage-content">
+                        <img src="/image/homme2.jpeg" alt="Photo Client 4">
+                        <blockquote>
+                            <p>Le service de navette à vélo de Véliko m'a permis de me déplacer facilement dans Paris sans avoir à attendre les transports en commun. C'était pratique et écologique. Je recommande!</p>
+                            <cite>Thomas, Royaume-Uni</cite>
+                        </blockquote>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <section id="promotions">
+        <div class="container">
+            <h2>Promotions et Offres Spéciales</h2>
+            <p>Profitez de nos promotions en cours sur la location de vélos à Paris!</p>
+            <p>Consultez notre <a href="/promotions" class="btn-secondary">page des promotions</a> pour découvrir nos offres spéciales et réserver votre vélo dès aujourd'hui!</p>
+        </div>
+    </section>
+    <section id="about" >
+        <div class="container">
+            <h2>À Propos de Nous</h2>
+            <p>Véliko est la première entreprise de location de vélos à Paris. Nous sommes fiers de fournir un moyen écologique et pratique de se déplacer dans la ville lumière.</p>
+            <p>Nous nous engageons à offrir à nos clients des services de qualité, des vélos bien entretenus et des abonnements flexibles pour répondre à leurs besoins de déplacement.</p>
+            <p>Notre équipe est composée de passionnés de cyclisme et de professionnels dévoués qui travaillent chaque jour pour rendre votre expérience avec Véliko agréable et sans tracas.</p>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="container">
+            <h2>Contactez-nous</h2>
+            <p>Pour toute question ou préoccupation, n'hésitez pas à nous contacter.</p>
+            <a href="contact.html" class="btn-secondary">Nous Contacter</a>
+        </div>
+    </section>
+    <footer>
+        <div class="container">
+            <footer>
+                <div class="container">
+                    <p>&copy; 2024 Véliko - Tous droits réservés</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"> </i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </footer>
+
+        </div>
+    </footer>
+
+
+
+
+{% endblock %}

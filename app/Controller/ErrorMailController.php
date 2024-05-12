@@ -2,7 +2,6 @@
 
 namespace Controller;
 
-use Studoo\EduFramework\Core\ConfigCore;
 use Studoo\EduFramework\Core\Controller\ControllerInterface;
 use Studoo\EduFramework\Core\Controller\Request;
 use Studoo\EduFramework\Core\View\TwigCore;
@@ -10,7 +9,7 @@ use Twig\Error\LoaderError;
 use Twig\Error\RuntimeError;
 use Twig\Error\SyntaxError;
 
-class EmailController implements ControllerInterface
+class ErrorMailController implements ControllerInterface
 {
     /**
      * @param Request $request Requête HTTP
@@ -22,10 +21,9 @@ class EmailController implements ControllerInterface
     public function execute(Request $request): string|null
     {
 
-        var_dump(ConfigCore::getConfig(key: 'version'));
-        return TwigCore::getEnvironment()->render('Email/monMail.html.twig',
+        return TwigCore::getEnvironment()->render('errorMail/errorMail.html.twig',
             [
-                'titre'   => "" ,
+                'titre'   => 'Hello World !',
                 'requete' => $request
             ]
         );

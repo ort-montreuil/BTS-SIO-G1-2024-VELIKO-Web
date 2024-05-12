@@ -23,12 +23,17 @@ connexion:
     controller: Controller\ConnexionController
     httpMethod: [GET,POST]
 
-Email:
-    uri: /email
-    controller: Controller\EmailController
-    httpMethod: [GET,POST]
+welcome:
+    uri: /welcome
+    controller: Controller\WelcomeController
+    httpMethod: [GET, POST]
 
-a-p-i:
+ErrorMail:
+    uri: /errorMail
+    controller: Controller\ErrorMailController
+    httpMethod: [GET, POST]
+
+api:
     uri: /api
-    controller: Controller\Recup_APIController
+    controller: Controller\RecupAPIController
     httpMethod: [GET,POST]

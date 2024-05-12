@@ -34,7 +34,7 @@ class ConnexionController implements ControllerInterface
             // Vérification du mot de passe
             if ($user && password_verify($password, $user['password'])) {
                 // L'utilisateur est authentifié, rediriger vers une page protégée
-                header("Location: /encrypt");
+                header("Location: /home");
                 exit();
             } else {
                 // Identifiants invalides, afficher un message d'erreur

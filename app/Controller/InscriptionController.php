@@ -15,10 +15,6 @@ class InscriptionController implements ControllerInterface
 {
 	public function execute(Request $request): string|null
 	{
-
-
-
-
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $nom = $_POST['nom'] ?? '';
             $prenom = $_POST['prenom'] ?? '';
@@ -28,45 +24,28 @@ class InscriptionController implements ControllerInterface
             if (empty($nom) || empty($prenom) || empty($email) || empty($password)){
                 return "Veuillez remplir tout les champs";
             }
-
-
             if (strlen($password) < 8 || !preg_match("/[A-Z]/", $password) ||
                 !preg_match("/[a-z]/", $password) ||
                 !preg_match("/[0-9]/", $password) ||
                 !preg_match("/[^A-Za-z0-9]/", $password)||
                 !preg_match("/[@]/", $email)||
                 !preg_match("/[.]/", $email)){
-                // message d'erreur
+                // Construire un message d'erreur
                 return "<center><h1>Adresse e-mail ou le mot de passe n'est pas conforme aux critères </h1> <br> 
                         <a href='/inscription'>Veuillez Ressayez</a> </center";
             }
-
-// Si le mot de passe est valide
+// Si le mot de passe est valide, procéder à l'inscription
             $password_hache = password_hash($password, PASSWORD_DEFAULT);
             $this->insertUser($nom, $prenom, $email, $password_hache);
-            header("Location: /encrypt");
+            header("Location: /home");
             exit();
-
-
-
-
         }
-
-
-
-
-
-
 		return TwigCore::getEnvironment()->render('inscription/inscription.html.twig',
 		    [
 		        "titre"   => 'Bienvenue',
 		        "request" => $request
 		    ]
 		);
-
-
-
-
 	}
     /**
      * @param string $nom
@@ -75,32 +54,30 @@ class InscriptionController implements ControllerInterface
      * @param string $password_hache
      * @return void
      */
-
     #[NoReturn] private function insertUser(string $nom, string $prenom, string $email, string $password_hache): void{
-        // Connexion 
+        // Connexion à la base de données
         $bdd = new PDO('mysql:host=localhost;dbname=TestCyb', 'root', 'root');
 
-        //  si le mail existe déjà dans la base de données
+        // verifie si l'email existe dans la base de donnée
         $stmt = $bdd->prepare("SELECT COUNT(*) FROM Utilisateur WHERE email = ?");
         $stmt->execute([$email]);
         $result = $stmt->fetchColumn();
 
         if ($result > 0) {
-            //message d'erreur à l'utilisateur
-            header("Location: /monMail");
+            // email existe déjà, renvoyer un message d'erreur à l'utilisateur
+
+            header("Location: /errorMail");
             exit();
         }
 
-        //requête d'insertion
+        // Préparation de la requête d'insertion
         $stmt = $bdd->prepare("INSERT INTO Utilisateur (nom, prenom, email, password) VALUES (?, ?, ?, ?)");
 
-        // Exécution requête
+        // Exécution de la requête avec les données utilisateur
         $stmt->execute([$nom, $prenom, $email, $password_hache]);
 
-        //inscription réussie
-        header("Location: /encrypt");
+        // Redirection vers une autre page après l'inscription réussie
+        header("Location: /home");
         exit();
     }
-
-
 }
