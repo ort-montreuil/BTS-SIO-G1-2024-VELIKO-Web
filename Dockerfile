@@ -1,14 +1,15 @@
-FROM php:8.2-apache
+# Utiliser l'image officielle de PHP-FPM
+FROM php:7.4-fpm
 
-# Pour mettre à jour la bibliothèque d'extension et dire oui par défaut
-RUN apt-get update && apt-get upgrade -y
-RUN ufw allow "Apache Full"
-RUN a2enmod ssl
+# Installer OpenSSL
+RUN apt-get update && apt-get install -y \
+    openssl \
+    && docker-php-ext-install pdo_mysql
 
-#Installation des extensions par Docker de PH soit de PDO et Mysql
-RUN docker-php-ext-install mysqli pdo pdo_mysql && docker-php-ext-enable mysqli pdo_mysql
+# Copier le code source dans le conteneur
+COPY ./www /var/www/html
 
-EXPOSE 80
-
-
+# Définir les permissions appropriées
+RUN chown -R www-data:www-data /var/www/html \
+    && chmod -R 755 /var/www/html
 
