@@ -24,7 +24,7 @@ connexion:
     httpMethod: [GET,POST]
 
 welcome:
-    uri: /welcome
+    uri: /
     controller: Controller\WelcomeController
     httpMethod: [GET, POST]
 

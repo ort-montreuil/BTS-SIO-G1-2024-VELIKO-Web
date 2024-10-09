@@ -1,14 +1,37 @@
 {% extends "base.html.twig" %}
 
-{% block title %}
-    {{ titre }}
+{% block style %}
+        <style>
+            #fond{
+                background-color: darkslateblue;
+                border-color: #023c56;
+            }
+
+            .container {
+                text-align: center;
+                padding: 0;
+                margin: 0;
+                width: 100%;
+                height: 100vh; /* Hauteur de l'écran */
+                border-radius: 10px;
+            }
+
+            #map {
+                width: 100%;   /* La carte occupe toute la largeur */
+                height: 100%;  /* La carte occupe toute la hauteur */
+            }
+        </style>
+
 {% endblock %}
 
 {% block content %}
+    <div class="container">
+    <center><div>{{ titre }}</div></center>
     <div id="map" class="map-container" style="height: 450px"></div>
 
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.1/dist/leaflet.css">
     <script src="https://unpkg.com/leaflet@1.3.1/dist/leaflet.js" defer></script>
+    </div>
 
 
 {% endblock %}

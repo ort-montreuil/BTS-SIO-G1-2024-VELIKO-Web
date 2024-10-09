@@ -56,7 +56,7 @@ class InscriptionController implements ControllerInterface
      */
     #[NoReturn] private function insertUser(string $nom, string $prenom, string $email, string $password_hache): void{
         // Connexion à la base de données
-        $bdd = new PDO('mysql:host=localhost;dbname=TestCyb', 'root', 'root');
+        $bdd = new PDO('mysql:host=localhost;dbname=TestCyb', 'root', 'moussa');
 
         // verifie si l'email existe dans la base de donnée
         $stmt = $bdd->prepare("SELECT COUNT(*) FROM Utilisateur WHERE email = ?");

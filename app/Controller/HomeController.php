@@ -23,7 +23,7 @@ class HomeController implements ControllerInterface
 
         return TwigCore::getEnvironment()->render('home/home.html.twig',
             [
-                'titre'   => 'Hello World !',
+                'titre'   => 'Veliko Map',
                 'requete' => $request
             ]
         );

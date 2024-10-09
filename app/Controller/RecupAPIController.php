@@ -14,6 +14,13 @@ use Twig\Error\SyntaxError;
 
 class RecupAPIController implements ControllerInterface
 {
+    /**
+     * @param Request $request
+     * @return string|null
+     * @throws LoaderError
+     * @throws RuntimeError
+     * @throws SyntaxError
+     */
     public function execute(Request $request): string|null
     {
         $connect=DatabaseService::getConnect();
@@ -46,7 +53,7 @@ class RecupAPIController implements ControllerInterface
 
             $velib_data = json_decode($response, true);
 
-            foreach ($velib_data["data"]["stations"] as $station) {
+            foreach ($velib_data["data"]["station"] as $station) {
                 var_dump($station);
                 exit();
 

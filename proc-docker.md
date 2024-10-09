@@ -41,7 +41,7 @@ ou
 >sudo nano /var/www/html/index.php
 
 <?php echo "<h1>Hello !</h1>"; ?>
-
+ 
 <h4>Etape 7, Enfin, supprimez la page d'accueil d'origine d'Apache.</h4>
 >sudo rm /var/www/html/index.html
 

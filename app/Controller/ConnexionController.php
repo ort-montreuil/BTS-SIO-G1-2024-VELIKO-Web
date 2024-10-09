@@ -23,7 +23,7 @@ class ConnexionController implements ControllerInterface
             }
 
             // Connexion à la base de données
-            $bdd = new PDO('mysql:host=localhost;dbname=TestCyb', 'root', 'root');
+            $bdd = new PDO('mysql:host=localhost;dbname=TestCyb', 'root', 'moussa');
 
             // Requête pour récupérer l'utilisateur par son email
             $stmt = $bdd->prepare("SELECT * FROM Utilisateur WHERE email = ?");

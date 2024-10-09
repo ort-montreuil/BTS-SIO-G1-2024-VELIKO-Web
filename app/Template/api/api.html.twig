@@ -5,7 +5,7 @@
 
     {% if apiData is defined and apiData.stations is not empty %}
         <ul>
-            {% for station in apiData.stations %}
+            {% for station in apiData.station %}
                 <li>
                     Station: {{ station.name }} <br>
                     Station ID: {{ station.station_id }} <br>
