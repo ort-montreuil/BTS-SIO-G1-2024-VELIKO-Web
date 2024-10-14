@@ -77,5 +77,6 @@ Redirect / https://your_domain_or_ip/
 
 Enregistrez et fermez ce fichier lorsque vous avez terminé, puis testez à nouveau la syntaxe de votre configuration, et rechargez Apache :
 >$ sudo apachectl configtest
-$ sudo systemctl reload apache2
+> 
+> $ sudo systemctl reload apache2
 

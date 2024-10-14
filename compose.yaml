@@ -8,37 +8,71 @@ services:
     volumes:
       - ~/mysql-data:/var/lib/mysql
     environment:
-      MSQL_ROOT_PASSWORD: pass
-      MSQL_DATABASE: demo
-      MSQL_USER: test
+      MYSQL_ROOT_PASSWORD: pass
+      MYSQL_DATABASE: demo
+      MYSQL_USER: test
       MYSQL_PASSWORD: pass
     ports:
       - 3307:3306
-
-  phpmyadmin:
-    image: phpmyadmin
-    container_name: phpmyadmin
-    restart: always
-    ports:
-      - 8081:80
-    depends_on:
-      - db
+    networks:
+      - mynetwork
 
   php:
     image: php:8.2-apache
     container_name: php8.2
     ports:
-      - 8080:80
+      - "80:80"
     volumes:
-        - ./php:/var/www/html
-    build:
-        context: Dockerfile
+      - ./php:/var/www/html
+    networks:
+      - mynetwork
 
   nginx:
-   image: nginx:1.15.0-alpine
-   volumes:
-    - ./default.conf:/etc/nginx/conf.d/default.conf:ro
+    image: nginx:latest
+    container_name: nginx
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf
+      - ./site.conf:/etc/nginx/conf.d/default.conf
+      - ./certs:/etc/nginx/certs
+      - ./php:/var/www/html
+    depends_on:
+      - php-fpm
+    networks:
+      - mynetwork
+    ports:
+      - "443:443"
 
-   ports:
-    -  8089:80
-    - 443:443
+  php-fpm:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: php-fpm
+    networks:
+      - mynetwork
+
+  frankenphp:
+    image: dunglas/frankenphp:latest
+    container_name: frankenphp
+    volumes:
+      - ./php:/srv/app
+    networks:
+      - mynetwork
+    ports:
+      - "8081:443"  # Remarque: Port modifié pour éviter le conflit avec nginx
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: phpmyadmin
+    environment:
+      PMA_HOST: db
+      MYSQL_ROOT_PASSWORD: pass
+    ports:
+      - "8080:80"
+    depends_on:
+      - db
+    networks:
+      - mynetwork
+
+networks:
+  mynetwork:
+    driver: bridge
