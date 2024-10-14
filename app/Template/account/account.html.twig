@@ -1,0 +1,51 @@
+{% extends "base.html.twig" %}
+
+{% block title %}{{ titre }}{% endblock %}
+
+
+{% block content %}
+    <style>
+        body{
+            background-color: darkslateblue;
+        }
+
+        nav {
+            display: block;
+            unicode-bidi: isolate;
+            border-style: solid;
+            border-color: #160334;
+            color: white;
+            background-color: #160334;
+        }
+
+        .md-header {
+            background-color: #160334;
+            box-shadow: 0 0 .2rem #0000, 0 .2rem .4rem #0000;
+            color: white ;
+            display: block;
+            left: 0;
+            position: sticky;
+            right: 0;
+            top: 0;
+            z-index: 4;
+        }
+
+    </style>
+    <body>
+    <link rel="stylesheet" href="/account.css">
+
+
+
+
+    <nav class="md-header inner md-grid">
+        <h1>{{ titre }}</h1>
+    </nav>
+    <h3>{{ prenom }}</h3><br>
+    <h4>{{ nom }}</h4>
+
+    <div>
+        <a href="/connexion">Déconnexion</a>
+    </div>
+
+    </body>
+{% endblock %}

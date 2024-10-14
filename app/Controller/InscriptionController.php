@@ -37,6 +37,7 @@ class InscriptionController implements ControllerInterface
 // Si le mot de passe est valide, procéder à l'inscription
             $password_hache = password_hash($password, PASSWORD_DEFAULT);
             $this->insertUser($nom, $prenom, $email, $password_hache);
+
             header("Location: /home");
             exit();
         }
@@ -63,6 +64,7 @@ class InscriptionController implements ControllerInterface
         $stmt->execute([$email]);
         $result = $stmt->fetchColumn();
 
+
         if ($result > 0) {
             // email existe déjà, renvoyer un message d'erreur à l'utilisateur
 
@@ -70,11 +72,20 @@ class InscriptionController implements ControllerInterface
             exit();
         }
 
+
         // Préparation de la requête d'insertion
         $stmt = $bdd->prepare("INSERT INTO Utilisateur (nom, prenom, email, password) VALUES (?, ?, ?, ?)");
 
         // Exécution de la requête avec les données utilisateur
         $stmt->execute([$nom, $prenom, $email, $password_hache]);
+
+
+
+        session_start();
+        $_SESSION['prenom'] = $prenom;
+        $_SESSION['nom'] = $nom;
+
+
 
         // Redirection vers une autre page après l'inscription réussie
         header("Location: /home");

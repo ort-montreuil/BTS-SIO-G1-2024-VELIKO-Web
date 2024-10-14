@@ -15,9 +15,11 @@ class WelcomeController implements ControllerInterface
 	public function execute(Request $request): string|null
 	{
 
+
 		return TwigCore::getEnvironment()->render('welcome/welcome.html.twig',
 		    [
 		        "titre"   => 'HelloController',
+
 
 		    ]
 		);

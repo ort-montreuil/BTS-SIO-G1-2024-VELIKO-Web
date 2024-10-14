@@ -2,38 +2,35 @@ index:
     uri: /home
     controller: Controller\HomeController
     httpMethod: [GET]
-
 encrypt:
     uri: /encrypt
     controller: Controller\EncryptController
-    httpMethod: [GET,POST]
-
+    httpMethod: [GET, POST]
 decrypt:
     uri: /decrypt
     controller: Controller\DecryptController
-    httpMethod: [GET,POST]
-
+    httpMethod: [GET, POST]
 inscription:
     uri: /inscription
     controller: Controller\InscriptionController
-    httpMethod: [GET,POST]
-
+    httpMethod: [GET, POST]
 connexion:
     uri: /connexion
     controller: Controller\ConnexionController
-    httpMethod: [GET,POST]
-
+    httpMethod: [GET, POST]
 welcome:
-    uri: /
+    uri: /veliko
     controller: Controller\WelcomeController
     httpMethod: [GET, POST]
-
 ErrorMail:
     uri: /errorMail
     controller: Controller\ErrorMailController
     httpMethod: [GET, POST]
-
 api:
     uri: /api
     controller: Controller\RecupAPIController
-    httpMethod: [GET,POST]
+    httpMethod: [GET, POST]
+account:
+    uri: /account
+    controller: Controller\AccountController
+    httpMethod: [GET]

@@ -5,6 +5,7 @@ namespace Controller;
 use PDO;
 use Studoo\EduFramework\Core\Controller\ControllerInterface;
 use Studoo\EduFramework\Core\Controller\Request;
+use Studoo\EduFramework\Core\Service\DatabaseService;
 use Studoo\EduFramework\Core\View\TwigCore;
 use Twig\Error\LoaderError;
 use Twig\Error\RuntimeError;
@@ -25,6 +26,8 @@ class ConnexionController implements ControllerInterface
             // Connexion à la base de données
             $bdd = new PDO('mysql:host=localhost;dbname=TestCyb', 'root', 'moussa');
 
+            //$bdd = DatabaseService::getConnect();
+
             // Requête pour récupérer l'utilisateur par son email
             $stmt = $bdd->prepare("SELECT * FROM Utilisateur WHERE email = ?");
             $stmt->execute([$email]);
@@ -33,7 +36,12 @@ class ConnexionController implements ControllerInterface
 
             // Vérification du mot de passe
             if ($user && password_verify($password, $user['password'])) {
-                // L'utilisateur est authentifié, rediriger vers une page protégée
+                // L'utilisateur est authentifié, on stocke son prénom dans la session
+                $_SESSION['prenom'] = $user['prenom'];
+                $_SESSION['nom'] = $user['nom'];
+
+
+                // Rediriger vers la page d'accueil
                 header("Location: /home");
                 exit();
             } else {

@@ -1,37 +1,117 @@
 {% extends "base.html.twig" %}
 
-{% block style %}
+
+{% block content %}
+
+    <head>
+
         <style>
-            #fond{
+
+            body {
                 background-color: darkslateblue;
-                border-color: #023c56;
+                margin: 0;
+                padding: 0;
             }
 
+
             .container {
-                text-align: center;
+
+                justify-content: center;
+                align-items: center;
                 padding: 0;
                 margin: 0;
                 width: 100%;
-                height: 100vh; /* Hauteur de l'écran */
+                height: 100vh;
                 border-radius: 10px;
             }
 
             #map {
-                width: 100%;   /* La carte occupe toute la largeur */
-                height: 100%;  /* La carte occupe toute la hauteur */
+                width: 40%;
+                border-radius: 10px;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             }
+
+            .logo {
+                display: flex;
+                align-items: center;  /* Aligner verticalement l'image et le texte */
+                justify-content: space-between; /* Espace entre l'image et le lien profil */
+                padding: 0 20px;  /* Ajouter du padding à gauche et à droite */
+            }
+
+
+
+
+
+            .logo img {
+                width: 70px;
+                height: 65px;
+                margin-bottom: 10px;
+                border-radius: 50px;
+                margin-right: 20px; /* Ajouter de l'espace entre l'image et le reste */
+            }
+
+            .logo h1 {
+                flex-grow: 1;
+                text-align: center;
+                color: white;
+            }
+            nav {
+                width: 100%;
+                padding: 0;
+                margin: 0;
+                background-color: #160334;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.9);
+            }
+
+            .profile-link {
+                display: inline-block; /* Crée un rectangle autour du lien */
+                background-color: black; /* Fond noir */
+                padding: 10px 20px 10px 20px  ; /* Espacement intérieur */
+                border-radius: 5px; /* Cpwns légèrement arrondis */
+                text-decoration: none; /* Supprime la décoration de texte du lien */
+                margin-left: 20px;
+
+            }
+
+            .profile-link h3 {
+                color: white; /* Texte en blanc */
+                margin: 0; /* Supprime les marges par défaut */
+                font-size: 16px; /* Taille de police ajustée */
+            }
+
+            .profile-link:hover {
+                background-color: #333; /* Change la couleur au survol pour un effet */
+            }
+
+
+
         </style>
 
-{% endblock %}
-
-{% block content %}
-    <div class="container">
-    <center><div>{{ titre }}</div></center>
-    <div id="map" class="map-container" style="height: 450px"></div>
-
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.1/dist/leaflet.css">
+<nav>
+        <div class="logo">
+            <a><img src="/Image/Veliko1.jpg" alt="Logo Veliko"></a>
+            <h1>{{ titre }}</h1>
+            <a href="/account" class="profile-link">
+                <h3 id="profil">Votre profil</h3>
+            </a>
+        </div>
+
+</nav>
+
+        <h3 style="color: white">Bienvenue,{{ nom }} {{ prenom }} !</h3><br>
+
+    <center>
+    <div class="container">
+    <div id="map" class="map-container" style="height: 65%"></div>
     <script src="https://unpkg.com/leaflet@1.3.1/dist/leaflet.js" defer></script>
     </div>
+    </center>
+
+
+    </body>
+
+    </head>
 
 
 {% endblock %}

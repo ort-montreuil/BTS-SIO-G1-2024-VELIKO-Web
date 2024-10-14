@@ -9,7 +9,8 @@
     "ext-mbstring": "*",
     "studoo/edu-framework": "1.2.x-dev",
     "ext-pdo": "*",
-    "ext-curl": "*"
+    "ext-curl": "*",
+    "ext-http": "*"
   },
   "autoload": {
     "psr-4": {
